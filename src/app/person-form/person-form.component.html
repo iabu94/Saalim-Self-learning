@@ -1,0 +1,43 @@
+<div class="form-container">
+  <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+    <h2>Personal Details</h2>
+
+
+    <label>
+      Name:
+      <input type="text" formControlName="name" />
+    </label>
+    <div *ngIf="personForm.get('name')?.invalid && personForm.get('name')?.touched" class="error">
+      Name is required
+    </div>
+
+    <label>
+      Age:
+      <input type="number" formControlName="age" />
+    </label>
+    <div *ngIf="personForm.get('age')?.invalid && personForm.get('age')?.touched" class="error">
+      Age is required
+    </div>
+
+    <label>
+      Address:
+      <input type="text" formControlName="address" />
+    </label>
+    <div *ngIf="personForm.get('address')?.invalid && personForm.get('address')?.touched" class="error">
+      Address is required
+    </div>
+
+    <label>
+      Phone No:
+      <input type="text" formControlName="phone_no" />
+    </label>
+    <div *ngIf="personForm.get('phone_no')?.invalid && personForm.get('phone_no')?.touched" class="error">
+      Phone No is required
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+</div>
