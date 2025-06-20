@@ -2,20 +2,20 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-person-form', 
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './person-form.component.html',
-  styleUrl: './person-form.component.scss',
+    selector: 'app-person-form',
+    imports: [CommonModule, ReactiveFormsModule],
+    templateUrl: './person-form.component.html',
+    styleUrl: './person-form.component.scss'
 })
 export class PersonFormComponent {
   personForm: FormGroup;
   successMessage = '';
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient,private router: Router) {
     this.personForm = this.fb.group({
       name: ['', Validators.required],
       age: ['', Validators.required],
@@ -54,5 +54,8 @@ export class PersonFormComponent {
         this.successMessage = '';
       },
     });
+  }
+  onCancel() {
+    this.router.navigate(['/home']); 
   }
 }

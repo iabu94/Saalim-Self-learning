@@ -5,6 +5,7 @@
   background-color: #f9f9f9;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  align-items: center
 }
 
 h2 {
@@ -34,18 +35,39 @@ input {
   margin-top: 6px;
 }
 
+.button-group {
+  display: flex;
+  gap: 12px; /* spacing between buttons */
+  margin-top: 16px;
+}
+
 button {
-  padding: 10px;
-  background-color: #4caf50;
-  color: white;
+  padding: 10px 20px;
   font-weight: bold;
   border: none;
   border-radius: 6px;
   transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
-button:hover {
+.submit-btn {
+  background-color: #4caf50;
+  color: white;
+
+}
+
+.submit-btn:hover {
   background-color: #388e3c;
+}
+
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #c62828;
 }
 
 .error {
