@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { PersonService } from '../services/person.service';
 
 @Component({
     selector: 'app-person-form',
@@ -15,7 +15,7 @@ export class PersonFormComponent {
   successMessage = '';
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private http: HttpClient,private router: Router) {
+  constructor(private fb: FormBuilder, private personService: PersonService, private router: Router) {
     this.personForm = this.fb.group({
       name: ['', Validators.required],
       age: ['', Validators.required],
@@ -39,7 +39,7 @@ export class PersonFormComponent {
 
     const formData = this.personForm.value;
 
-    this.http.post('http://localhost:3000/person', formData).subscribe({
+     this.personService.createPerson(formData).subscribe({
       next: () => {
         this.successMessage = 'Data saved successfully!';
         this.errorMessage = '';
