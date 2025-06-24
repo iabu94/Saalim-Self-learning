@@ -29,7 +29,7 @@
 
     <label>
       Phone No:
-      <input type="text" formControlName="phone_no" />
+      <input type="number" formControlName="phone_no" />
     </label>
     <div *ngIf="personForm.get('phone_no')?.invalid && personForm.get('phone_no')?.touched" class="error">
       Phone No is required

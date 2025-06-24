@@ -4,19 +4,19 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { Router } from '@angular/router';
 import { PersonService } from '../services/person.service';
 
-export interface Person{
-  id:number;
-  name:string;
-  age:number;
-  address:string;
-  phone_no:number;
-} 
+export interface Person {
+  id: number;
+  name: string;
+  age: number;
+  address: string;
+  phone_no: number;
+}
 
 @Component({
-    selector: 'app-person-form',
-    imports: [CommonModule, ReactiveFormsModule],
-    templateUrl: './person-form.component.html',
-    styleUrl: './person-form.component.scss'
+  selector: 'app-person-form',
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './person-form.component.html',
+  styleUrl: './person-form.component.scss'
 })
 
 export class PersonFormComponent {
@@ -29,9 +29,9 @@ export class PersonFormComponent {
       name: ['', Validators.required],
       age: ['', Validators.required],
       address: ['', Validators.required],
-      phone_no:['' ,Validators.required]
+      phone_no: ['', Validators.required]
     });
-   
+
     this.personForm.valueChanges.subscribe(() => {
       if (this.personForm.valid) {
         this.errorMessage = '';
@@ -46,11 +46,11 @@ export class PersonFormComponent {
       return;
     }
 
-    const formData:Person = this.personForm.value;
-  
-     this.personService.createPerson(formData).subscribe({
+    const formData: Person = this.personForm.value;
+
+    this.personService.createPerson(formData).subscribe({
       next: () => {
-       
+
         this.successMessage = 'Data saved successfully!';
         this.errorMessage = '';
         this.personForm.reset();
@@ -65,6 +65,6 @@ export class PersonFormComponent {
     });
   }
   onCancel() {
-    this.router.navigate(['/home']); 
+    this.router.navigate(['/home']);
   }
 }
